@@ -6,6 +6,9 @@ test.describe('Gestão de Usuários - Criar Perfil', () => {
   test('Acessa a página de gestão de usuários, clica em Novo perfil, preenche nome e seleciona Profissional de Saúde', async ({ page }) => {
     const userManagement = new UserManagementPage(page);
     
+    const now = new Date();
+    const dateTime = now.toLocaleString('pt-BR').replace(/[/: ]/g, '-');
+    
     try {
       // Navega para a página e verifica se carregou corretamente
       await userManagement.navigate();
@@ -26,7 +29,7 @@ test.describe('Gestão de Usuários - Criar Perfil', () => {
       
       // Preenche o nome do perfil
       const profileNumber = getNextProfileNumber();
-      const profileName = `teste automatizado numero${profileNumber}`;
+      const profileName = `teste automatizado ${dateTime}`;
       const nameInput = page.locator('input[placeholder="Nome do Perfil"]');
       await nameInput.click();
       await nameInput.fill(profileName);
