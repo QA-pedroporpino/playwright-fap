@@ -9,7 +9,7 @@ export class UserManagementPage {
   }
 
   async navigate() {
-    await this.page.goto(`${this.baseUrl}/gestao-usuario`, { 
+    await this.page.goto(`${this.baseUrl}/gestao-perfil-usuario`, { 
       waitUntil: 'networkidle',
       timeout: 30000 
     });

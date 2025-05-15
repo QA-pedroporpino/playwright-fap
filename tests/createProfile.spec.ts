@@ -10,7 +10,7 @@ test.describe('Gestão de Usuários - Criar Perfil', () => {
       // Navega para a página e verifica se carregou corretamente
       await userManagement.navigate();
       await takeScreenshot(page, '1-pagina-inicial');
-      await expect(page).toHaveURL(/gestao-usuario/);
+      await expect(page).toHaveURL(/gestao-perfil-usuario/);
       // await expect(page).toHaveTitle(/Gestão de Usuários/); // Remova ou ajuste para /FAP CLINICA/
       
       // Verifica se o botão de novo perfil está visível antes de clicar
