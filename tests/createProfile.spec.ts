@@ -74,6 +74,10 @@ test.describe('Gestão de Usuários - Criar Perfil', () => {
 
       // Clica no botão
       await salvarButton.click();
+
+      // Aguarda a mensagem de sucesso no modal
+      const successMessage = page.locator('h2.success-title');
+      await expect(successMessage).toHaveText('Perfil de Usuário Criado com sucesso!');
     } catch (error) {
       await logError(page, error, 'criação de perfil');
       throw error;
