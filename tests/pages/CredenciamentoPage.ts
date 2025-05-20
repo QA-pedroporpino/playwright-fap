@@ -46,4 +46,25 @@ export class CredenciamentoPage {
 
     return nomeClinica;
   }
+
+  async fillPerfil(perfil: string) {
+    await this.page.waitForLoadState('networkidle');
+
+    // Localiza o input usando role e placeholder
+    const input = this.page.locator('input#ion-input-1');
+    await expect(input).toBeVisible({ timeout: 10000 });
+    
+    // Tenta clicar duas vezes para garantir o foco
+    await input.click();
+    await this.page.waitForTimeout(500);
+    await input.click();
+    
+    // Preenche o campo
+    await input.fill(perfil);
+    await this.page.waitForTimeout(500);
+    await input.fill(perfil);
+
+    // Verifica se o valor foi inserido corretamente
+    await expect(input).toHaveValue(perfil);
+  }
 } 
