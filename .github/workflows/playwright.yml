@@ -26,6 +26,9 @@ jobs:
       - name: Instalar browsers do Playwright
         run: npx playwright install --with-deps
 
+      - name: Ensure playwright/.auth directory exists
+        run: mkdir -p playwright/.auth
+
       - name: Rodar testes Playwright
         run: npx playwright test
 
