@@ -1,25 +1,34 @@
 # Playwright Test Automation Project - FAP
 
-Este projeto contém testes automatizados usando Playwright para a aplicação FAP (FAP Clinic).
+Este projeto contém testes automatizados usando Playwright para a aplicação FAP (FAP Clinic), seguindo o padrão Page Object Model (POM).
 
 ## Estrutura do Projeto
 
 ```
 ├── tests/
-│   ├── pages/           # Page Objects (CredenciamentoPage, etc.)
-│   ├── utils/           # Funções utilitárias
+│   ├── pages/           # Page Objects (LoginPage, UserManagementPage, CredenciamentoPage)
+│   ├── utils/           # Funções utilitárias (helpers)
 │   ├── fixtures/        # Dados de teste
-│   └── *.spec.ts        # Arquivos de teste
-├── playwright.config.js # Configuração do Playwright
-└── package.json
+│   ├── cadastroUsuarioProfissional.spec.ts  # Teste de cadastro de usuário profissional
+│   ├── criarTabelaExames.spec.ts            # Teste de criação de tabela de exames
+│   ├── credenciamento.spec.ts               # Teste de credenciamento
+│   └── auth.setup.ts                        # Setup de autenticação
+├── playwright.config.ts # Configuração do Playwright
+├── package.json
+└── docs/POM_PATTERN.md  # Documentação do padrão POM
 ```
 
 ## Casos de Teste Implementados
 
+- Cadastro de Usuário Profissional
+- Criação de Tabela de Preços/Exames
 - Credenciamento
-  - Acesso à página de credenciamento
-  - Preenchimento do nome da clínica
-  - Preenchimento do perfil
+
+## Padrão de Automação
+
+O projeto segue o padrão Page Object Model (POM) para garantir manutenibilidade e escalabilidade dos testes.
+
+- Veja detalhes e exemplos em [`docs/POM_PATTERN.md`](docs/POM_PATTERN.md)
 
 ## Pré-requisitos
 

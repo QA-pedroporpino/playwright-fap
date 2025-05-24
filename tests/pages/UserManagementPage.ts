@@ -9,10 +9,18 @@ export class UserManagementPage {
   }
 
   async navigate() {
+    // Navigate to the user management page
     await this.page.goto(`${this.baseUrl}/gestao-perfil-usuario`, { 
       waitUntil: 'networkidle',
       timeout: 30000 
     });
+
+    // Wait for the page to be fully loaded and authenticated
+    await this.page.waitForURL('**/gestao-perfil-usuario', { timeout: 30000 });
+    
+    // Additional wait to ensure the page is fully loaded
+    await this.page.waitForLoadState('domcontentloaded');
+    await this.page.waitForLoadState('networkidle');
   }
 
   async clickNewProfile() {
