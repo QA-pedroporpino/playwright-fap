@@ -10,26 +10,35 @@ export default defineConfig({
   use: {
     baseURL: 'https://staging.fap.clinic.kompa.com.br',
     trace: 'on-first-retry',
-    storageState: 'playwright/.auth/user.json',
   },
   projects: [
     {
       name: 'setup',
       testMatch: /auth\.setup\.ts/,
+      use: {}
     },
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        ...devices['Desktop Chrome'],
+        storageState: 'playwright/.auth/user.json',
+      },
       dependencies: ['setup'],
     },
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: { 
+        ...devices['Desktop Firefox'],
+        storageState: 'playwright/.auth/user.json',
+      },
       dependencies: ['setup'],
     },
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: { 
+        ...devices['Desktop Safari'],
+        storageState: 'playwright/.auth/user.json',
+      },
       dependencies: ['setup'],
     },
   ],
