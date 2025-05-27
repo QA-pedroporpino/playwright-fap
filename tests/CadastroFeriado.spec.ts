@@ -42,7 +42,7 @@ test.describe('Cadastro de Feriados', () => {
       // Etapa 2: Localiza o input pelo placeholder
       await test.step('Localizar input pelo placeholder', async () => {
         const nomeFeriadoInput = page.locator('#holidayName input.native-input');
-        await expect(nomeFeriadoInput).toBeVisible({ timeout: 10000 });
+      await expect(nomeFeriadoInput).toBeVisible({ timeout: 10000 });
         await nomeFeriadoInput.waitFor({ state: 'visible', timeout: 10000 });
         await takeScreenshot(page, '5-2-localize-input');
       });
@@ -50,8 +50,8 @@ test.describe('Cadastro de Feriados', () => {
       // Etapa 3: Preenche o campo com o nome do feriado
       await test.step('Preencher nome do feriado', async () => {
         const nomeFeriadoInput = page.locator('#holidayName input.native-input');
-        const now = new Date();
-        const dateTime = now.toLocaleString('pt-BR').replace(/[/: ]/g, '-');
+      const now = new Date();
+      const dateTime = now.toLocaleString('pt-BR').replace(/[/: ]/g, '-');
         const holidayName = `Feriado Automatizado ${dateTime}`;
 
         await expect(async () => {
