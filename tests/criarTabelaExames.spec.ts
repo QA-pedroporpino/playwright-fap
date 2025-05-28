@@ -147,6 +147,13 @@ test.describe('Criar nova Tabela de Preços/Exames', () => {
       await expect(page).toHaveURL('https://staging.fap.clinic.kompa.com.br/tabela-precos-exames', { timeout: 10000 });
       await takeScreenshot(page, '21-final-url');
 
+      // Critério de reprovação: se aparecer 'Nenhum registro encontrado.' o teste deve falhar
+      const nenhumRegistro = page.getByText('Nenhum registro encontrado.', { exact: true });
+      if (await nenhumRegistro.isVisible({ timeout: 3000 }).catch(() => false)) {
+        await takeScreenshot(page, '22-nenhum-registro-encontrado');
+        throw new Error('Teste reprovado: Nenhum registro encontrado após criar tabela de exames.');
+      }
+
     } catch (error) {
       await logError(page, error, 'tabela-exames');
       throw error;
